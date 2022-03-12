@@ -1,0 +1,7 @@
+7
+
+<IfModule> is simply a directive that tests the condition "is the named module loaded by apache httpd" (in your example mod_expires). It allows people to produce conditional based configuration for different installations where certain modules may be present or not.
+
+Best practise is not to use it unless necessary. Ideally, you should know which modules your web server loads and thus which configuration directives are available.
+
+You can always check the modules you web server is loading using apachectl -M and apachectl configtest before restarting your web server should reveal any directives that you have used without loading the relevant module.
