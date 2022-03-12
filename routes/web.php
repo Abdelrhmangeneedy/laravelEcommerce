@@ -97,3 +97,7 @@ Route::middleware('auth','isAdmin')->group(function (){
     Route::get('view-users/{id}', [DashboardController::class, 'viewusers']);
 
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
