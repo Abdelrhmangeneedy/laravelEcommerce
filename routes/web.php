@@ -35,12 +35,11 @@ Route::get('category/{cate_slug}/{prod_slug}', [FrontendController::class, 'prod
 Route::get('product-list', [FrontendController::class, 'productlistAjax']);
 Route::get('searchproduct', [FrontendController::class, 'searchProduct']);
 
-Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('load-to-cart',[CartController::class, 'cartcount']);
+Route::get('cart/count',[CartController::class,'cartcount']);
 Route::get('load-wishlist-count',[WishlistController::class, 'wishlistcount']);
 
 
@@ -58,7 +57,7 @@ Route::middleware('auth')->group(function (){
     Route::get('my-order',[UserController::class, 'index']);
     Route::get('/view-order/{id}',[UserController::class, 'view']);
 
-    Route::get('add-rating',[RatingController::class, 'add']);
+    Route::post('add-rating',[RatingController::class, 'add']);
 
     Route::get('/add-review/{products->slug}/userreview',[ReviewController::class, 'add']);
     Route::post('/add-review',[ReviewController::class, 'create']);
@@ -98,6 +97,6 @@ Route::middleware('auth','isAdmin')->group(function (){
 
 });
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

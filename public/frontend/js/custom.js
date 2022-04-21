@@ -1,16 +1,13 @@
 $(document).ready(function() {
 
-    loadcart();
-    loadwishlist();
-
     $.ajaxSetup({
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content') }
     });
 
-    function loadcart() {
+    function cartCount() {
         $.ajax({
             method: "GET",
-            url: "/load-cart-data",
+            url: "/cart/count",
             success: function(response) {
                 $('.wishlist-count').html('');
                 $('.wishlist-count').html(response.count);
@@ -155,4 +152,8 @@ $(document).ready(function() {
             }
         });
     });
+
+    cartCount();
+    loadwishlist();
+
 });
