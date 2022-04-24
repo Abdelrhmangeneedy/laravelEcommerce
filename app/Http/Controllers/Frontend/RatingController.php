@@ -16,7 +16,7 @@ class RatingController extends Controller
         $stars_rated = $request->input('product_rating');
         $product_id = $request->input('product_id');
 
-        $product_check = Product::where('id', $product_id)->where('status', '0')->first();
+        $product_check = Product::where('id', $product_id)->where('status', false)->first();
         if ($product_check) {
             $verified_purchase = Order::where('orders.user_id', Auth::id())
             ->join('order_items', 'orders.id', 'order_items.orders_id')
@@ -40,13 +40,11 @@ class RatingController extends Controller
 
                   return redirect()->back()->with('status', "Thanks You For The Rate ");
             }
-            else
-            {
+
                 return redirect()->back()->with('status', "You cannot rate a product without purchase");
-            }
+
         }
-        else{
             return redirect()->back()->with('status', "the link you followed was broken");
-        }
+
     }
 }

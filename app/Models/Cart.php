@@ -11,6 +11,7 @@ class Cart extends Model
     protected $table = 'carts';
     protected $filtable =
     [
+        'session_id',
         'user_id',
         'prod_id',
         'prod_qty',

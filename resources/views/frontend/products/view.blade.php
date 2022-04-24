@@ -7,7 +7,7 @@
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="{{ url('/add-rating') }}" method="HEAD">
+                    <form action="{{ url('/add-rating') }}" method="POST">
                         @csrf
                             <div class="modal-header">
                                 <input type="hidden" class="product_id" value={{ $products->id }}>
